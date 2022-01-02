@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(move*speed*Time.deltaTime);
 
-        Debug.Log(controller.isGrounded);
        
 
 
