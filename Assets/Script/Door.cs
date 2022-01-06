@@ -5,9 +5,12 @@ using UnityEngine;
 public class Door : MonoBehaviour {
 
     private bool inDoor;
-    public Transform doorObject;
+    private Transform doorObject;
+    public GameObject door;
+
 
     private void Start() {
+        doorObject = door.transform;
     }
 
     private void OnTriggerEnter(Collider other) {
