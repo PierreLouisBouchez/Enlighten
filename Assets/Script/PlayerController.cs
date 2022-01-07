@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public Transform camera;
     public Transform feet;
+    public Component Light1;
+
 
     float rotationX = 0.0f;
     public float gravity = 9.5f;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        onGround = Physics.CheckSphere(feet.position,0.4f, ground);
+        onGround = Physics.CheckSphere(feet.position,0.5f, ground);
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical   = Input.GetAxisRaw("Vertical");
         if (Input.GetKey(KeyCode.LeftShift))
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && onGround)
             {
+                Debug.Log("Jump");
                 fall = jumpheigt;
 
             }
@@ -53,12 +56,7 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(move*speed*Time.deltaTime);
 
-       
-
-
-
-
-
+     
         float mouseX = Input.GetAxis("Mouse X") * sensitive * Time.deltaTime;
         rotationX -= Input.GetAxis("Mouse Y") * sensitive * Time.deltaTime;
 
@@ -68,7 +66,11 @@ public class PlayerController : MonoBehaviour
         camera.localRotation = Quaternion.Euler(rotationX, 0f,0f);
         transform.Rotate(Vector3.up * mouseX);
 
+        if (Input.GetButtonDown("Light"))
+        {
+            Light1.GetComponent<Light>().enabled = !Light1.GetComponent<Light>().enabled;
 
+        }
 
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.W))
         {
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            controller.height = 2.5f;
+            controller.height = 2.8f;
             isCrouching = false;
         }
     }

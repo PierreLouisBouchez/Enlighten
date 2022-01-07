@@ -15,8 +15,8 @@ public class Door : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.name == "Character") {
-            Debug.Log(this.name);
             inDoor = true;
+            this.GetComponent<AudioSource>().Play();
         }
     }
     
@@ -25,6 +25,8 @@ public class Door : MonoBehaviour {
         if (other.gameObject.name == "Character")
         {
             inDoor = false;
+            this.GetComponent<AudioSource>().Play();
+
         }
     }
 
