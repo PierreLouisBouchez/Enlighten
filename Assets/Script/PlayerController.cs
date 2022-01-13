@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         {
             fall = -2;
 
-            if (Input.GetButtonDown("Jump") && onGround)
+            if (Input.GetButtonDown("Jump") /*&& onGround*/)
             {
                 Debug.Log("Jump");
                 fall = jumpheigt;
