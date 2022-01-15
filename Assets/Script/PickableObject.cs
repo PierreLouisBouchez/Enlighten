@@ -10,6 +10,7 @@ public class PickableObject : MonoBehaviour{
     private bool canTake = false;
     private bool taken = false;
     private GameObject GoName;
+    private Transform parent;
 
     void Start(){
 
@@ -24,6 +25,7 @@ public class PickableObject : MonoBehaviour{
         else if(!taken && canTake && Input.GetKeyDown(KeyCode.A)){
             GoName.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             //GoName.transform.position = GameObject.Find("ObjectTake").transform.position;
+            parent = GoName.gameObject.transform.parent;
             GoName.gameObject.transform.parent = GameObject.Find("ObjectTake").transform;
             taken = true;
         }
@@ -36,7 +38,8 @@ public class PickableObject : MonoBehaviour{
     }
 
     void Eject(float streng){
-        GoName.gameObject.transform.parent = null;
+        GoName.gameObject.transform.parent = parent;
+        parent = null;
         GoName.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         GoName.GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.forward * streng));
         taken = false;
