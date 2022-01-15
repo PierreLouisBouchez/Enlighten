@@ -20,11 +20,17 @@ public class PlayerController : MonoBehaviour
     bool onGround;
     public LayerMask ground;
     private bool isCrouching;
-    private bool isRamping;
 
+
+    public AudioClip ambient;
+    private AudioSource Audio;
 
     void Start()
     {
+        Audio = GetComponent<AudioSource>();
+        Audio.clip = ambient;
+        Audio.loop = true;
+        Audio.Play();
     }
 
     void Update()
@@ -41,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             fall = -2;
 
-            if (Input.GetButtonDown("Jump") /*&& onGround*/)
+            if (Input.GetButtonDown("Jump") && !isCrouching)
             {
                 Debug.Log("Jump");
                 fall = jumpheigt;
@@ -72,15 +78,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             controller.height = .5f;
             isCrouching = true;
-            if (Input.GetKey(KeyCode.W))
-            {
-                controller.height = .1f;
-                isRamping = true;
-            }
         }
         else
         {
