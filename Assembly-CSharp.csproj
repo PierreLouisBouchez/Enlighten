@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\gravity.cs" />
     <Compile Include="Assets\Script\Stomboscope.cs" />
     <Compile Include="Assets\pushed.cs" />
+    <Compile Include="Assets\Script\Culling.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Data\AdventureForge\Read me.txt" />

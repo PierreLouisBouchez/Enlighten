@@ -34,11 +34,11 @@ public class Door : MonoBehaviour {
     {
         if (inDoor && doorObject.position.y < 3)
         {
-            doorObject.Translate(0, 2f*Time.deltaTime, 0);
+            doorObject.Translate(0, 3f*Time.deltaTime, 0);
         }
         else if(!inDoor && doorObject.position.y>0)
         {
-            doorObject.Translate(0, -2f * Time.deltaTime, 0);
+            doorObject.Translate(0, -3f * Time.deltaTime, 0);
 
         }
     }

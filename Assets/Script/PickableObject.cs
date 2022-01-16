@@ -47,7 +47,6 @@ public class PickableObject : MonoBehaviour{
 
     void OnTriggerEnter(Collider col){
         if(col.gameObject.tag == "TackableObject"){
-            print("Dans le trigger");
             canTake = true;
             if(!taken){
                 GoName = col.gameObject;
@@ -57,7 +56,6 @@ public class PickableObject : MonoBehaviour{
 
     void OnTriggerExit(Collider col){
         if(col.gameObject.tag == "TackableObject"){
-            print("Exit le trigger");
             canTake = false;
             if(!taken){
                 GoName = null;
